@@ -21,3 +21,11 @@
     min-height:300px;
     margin: 10px 0
 }
+
+.custom-background {
+    background-color: #345363;
+}
+
+#logo-navbar {
+    max-height: 50px;
+}
