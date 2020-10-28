@@ -15,42 +15,43 @@
     <title>Hello, world!</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="../index.html">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="../index.html">Startseite <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="city.html" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Städte
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="parking.html">Zürich</a>
-                    <a class="dropdown-item" href="parking.html">Basel</a>
-                    <a class="dropdown-item" href="parking.html">St. Gallen</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="map.html">Karte</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="about.html">Über uns</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-dark custom-background">
+        <a class="navbar-brand" href="../index.html"><img src="../docs/logo.png" id="logo-navbar"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="../index.html">Startseite <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="city.html" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Städte
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="city.html">Zürich</a>
+                        <a class="dropdown-item" href="city.html">Basel</a>
+                        <a class="dropdown-item" href="city.html">St. Gallen</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="map.html">Karte</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">Über uns</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    
 <div class="container py-5">
     <h1>Puls 5</h1>
     <hr>
@@ -116,6 +117,13 @@
         </div>
     </div>
 </div>
+
+<footer class="page-footer font-small custom-background text-light">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">&copy; 2020 <a class="text-light" href="#">carpar.ch</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
 
 <!-- jQuery and Bootstrap Bundle (includes Popper) -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
