@@ -1,10 +1,18 @@
 import React from "react";
-import {Button, Card, Container, Form, FormControl, Jumbotron} from "react-bootstrap";
+import {Button, Card, Container, Form, FormControl, Jumbotron, NavLink} from "react-bootstrap";
 import logo from '../assets/logo.png';
 import appstore from '../assets/appstore.png';
 import playstore from '../assets/playstore.png';
+import {ICity} from "../shared/schemas/Datamodels";
+import {Link} from "react-router-dom";
 
-export default function Home(props: any) {
+export interface IHomeProps {
+    cities: ICity[] | undefined
+}
+
+export default function Home(props: IHomeProps) {
+    const {cities} = props
+
     return (
         <div>
             <Jumbotron fluid>
@@ -28,34 +36,45 @@ export default function Home(props: any) {
                 </Container>
             </Jumbotron>
             <Container className="py-5">
-                <div className="row">
-                    <div className="col">
-                        <h3>Parken in:</h3>
+                    <div className="row">
+                        <div className="col">
+                            <h3>Parken in:</h3>
+                        </div>
                     </div>
-                </div>
-                <div className="row mb-5 mt-3">
-                    <div className="col-4">
-                        <Card>
-                            <Card.Img variant="top" src="holder.js/100px180" />
-                            <Card.ImgOverlay><h5 className="card-title text-white">Test</h5></Card.ImgOverlay>
-                        </Card>
+                {cities ? <>
+                    <div className="row mb-5 mt-3">
+                        {cities.map(city =>
+                        <div className="col-4" key={city._id}>
+                            {city.showInUI ?
+                            <Link to={`/city/${city._id}`}>
+                                <Card>
+                                    <Card.Img variant="top" src={`../assets/${city.image}`} alt={city.name}/>
+                                    <Card.ImgOverlay><h5 className="card-title text-white">${city.name}</h5></Card.ImgOverlay>
+                                </Card>
+                            </Link>
+                                : <></>}
+                        </div>
+                        )}
                     </div>
-                </div>
+                </> : <p className="mt-3 mb-5">Städte konnten nicht geladen werden.</p>}
                 <hr/>
                 <div className="row my-5">
                     <div className="col-4">
-                        <img className="img-fluid" src={logo}/>
+                        <img className="img-fluid" src={logo} alt="CarPar Logo"/>
                     </div>
                     <div className="col-8 pl-5">
                         <h5>Die beste Parking App</h5>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                            et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+                            Lorem ipsum dolor sit amet.</p>
                         <div className="row mt-5 justify-content-center">
-                        <div className="col-3">
-                            <img className="img-fluid" src={appstore}/>
-                        </div>
-                        <div className="col-3">
-                            <img className="img-fluid" src={playstore}/>
-                        </div>
+                            <div className="col-3">
+                                <img className="img-fluid" src={appstore} alt="Download on the App Store"/>
+                            </div>
+                            <div className="col-3">
+                                <img className="img-fluid" src={playstore} alt="Get it on Google Play"/>
+                            </div>
                         </div>
                     </div>
                 </div>

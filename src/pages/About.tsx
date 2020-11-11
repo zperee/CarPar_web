@@ -8,7 +8,7 @@ export default function About(props: any) {
             <div className="row">
                 <div className="col-4">
                     <Card>
-                        <Card.Img variant="top" src="holder.js/100px180" />
+                        <Card.Img variant="top" src="holder.js/100px180" alt="Image Daria"/>
                         <Card.Body>
                             <Card.Title>Daria Gloor</Card.Title>
                             <Card.Text style={styles.heightFixed}>
@@ -19,7 +19,7 @@ export default function About(props: any) {
                 </div>
                 <div className="col-4">
                     <Card>
-                        <Card.Img variant="top" src="holder.js/100px180" />
+                        <Card.Img variant="top" src="holder.js/100px180" alt="Image Jessice"/>
                         <Card.Body>
                             <Card.Title>Jessica Nigg</Card.Title>
                             <Card.Text style={styles.heightFixed}>
@@ -30,7 +30,7 @@ export default function About(props: any) {
                 </div>
                 <div className="col-4">
                     <Card>
-                        <Card.Img variant="top" src="holder.js/100px180" />
+                        <Card.Img variant="top" src="holder.js/100px180" alt="Image Elia"/>
                         <Card.Body>
                             <Card.Title>Elia Perenzin</Card.Title>
                             <Card.Text style={styles.heightFixed}>
