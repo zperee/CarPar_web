@@ -7,7 +7,7 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import {ICity} from "./shared/schemas/Datamodels";
 import {getCities} from "./services/city-service";
-import CityOverview from "./pages/CityOverview";
+import ParkingMasterDetail from "./pages/ParkingMasterDetail";
 
 function App() {
     const [cities, setCities] = useState<ICity[]>();
@@ -32,7 +32,7 @@ function App() {
           <Switch>
               <Route exact path="/about" component={About}/>
               <Route exact path="/map" component={About}/>
-              <Route exact path="/city/:cityId" component={CityOverview}/>
+              <Route exact path="/city/:cityId" component={ParkingMasterDetail}/>
               <Route path="/" component={() => <Home cities={cities} />}/>
           </Switch>
         </Router>
