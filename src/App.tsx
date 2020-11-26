@@ -33,7 +33,7 @@ function App() {
               <Route exact path="/about" component={About}/>
               <Route exact path="/map" component={About}/>
               <Route exact path="/city/:cityId" component={ParkingMasterDetail}/>
-              <Route path="/" component={() => <Home cities={cities} />}/>
+              <Route path="/" component={() => <Home cities={cities} isLoading={isLoading} />}/>
           </Switch>
         </Router>
     </div>
