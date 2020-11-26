@@ -3,15 +3,22 @@ import {Button, Card, Container, Form, FormControl, Jumbotron, NavLink} from "re
 import logo from '../assets/logo.png';
 import appstore from '../assets/appstore.png';
 import playstore from '../assets/playstore.png';
+import luzernImage from '../assets/luzern.png';
 import {ICity} from "../shared/schemas/Datamodels";
 import {Link} from "react-router-dom";
+import CenterSpinner from "../components/CenterSpinner";
+import IStyleSheet from "../shared/schemas/StyleSheet";
 
 export interface IHomeProps {
     cities: ICity[] | undefined
+    isLoading: boolean
 }
 
 export default function Home(props: IHomeProps) {
-    const {cities} = props
+    const {cities, isLoading} = props
+
+    const images: any = {};
+    images['luzern'] = luzernImage;
 
     return (
         <div>
@@ -19,8 +26,7 @@ export default function Home(props: IHomeProps) {
                 <Container className="py-5">
                     <h1 className="display-4">Finde dein Parkhaus</h1>
                     <p className="lead">
-                        This is a modified jumbotron that occupies the entire horizontal space of
-                        its parent.
+                        Mit dem zentralen Parkleitsystem aus der Schweiz.
                     </p>
                     <hr className="my-4"/>
                     <Form>
@@ -41,22 +47,26 @@ export default function Home(props: IHomeProps) {
                             <h3>Parken in:</h3>
                         </div>
                     </div>
-                {cities ? <>
-                    <div className="row mb-5 mt-3">
+                <div style={styles.heightFixed}>
+                {cities ?
+                    <div className="row mb-5 mt-3" style={styles.heightFixed}>
                         {cities.map(city =>
-                        <div className="col-4" key={city._id}>
+                        <div className="col-lg-4 col-12 my-3" key={city._id}>
                             {city.showInUI ?
                             <Link to={`/city/${city._id}`}>
                                 <Card>
-                                    <Card.Img variant="top" src={`../assets/${city.image}`} alt={city.name}/>
-                                    <Card.ImgOverlay><h5 className="card-title text-white">${city.name}</h5></Card.ImgOverlay>
+                                    <Card.Img variant="top" src={images[city.name.toLowerCase()]} alt={city.name}/>
+                                    <Card.ImgOverlay><h5 className="card-title text-white">{city.name}</h5></Card.ImgOverlay>
                                 </Card>
                             </Link>
                                 : <></>}
                         </div>
                         )}
-                    </div>
-                </> : <p className="mt-3 mb-5">Städte konnten nicht geladen werden.</p>}
+                    </div> :
+                    isLoading?
+                        <CenterSpinner/>:
+                        <p className="mt-3 mb-5">Städte konnten nicht geladen werden.</p>}
+                </div>
                 <hr/>
                 <div className="row my-5">
                     <div className="col-4">
@@ -82,3 +92,10 @@ export default function Home(props: IHomeProps) {
         </div>
     )
 }
+
+const styles: IStyleSheet = {
+    heightFixed: {
+        minHeight: 250
+    },
+};
+
