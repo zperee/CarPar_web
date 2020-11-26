@@ -1,1 +1,30 @@
 @import "shared/theming.scss";
+
+/* Should be importet with react-table-2 on index.tsx but it doesnn't work */
+.sortable .dropup .caret {
+  content: "";
+  border-top: 0;
+  border-bottom: 4px dashed;
+  border-bottom: 4px solid\9;
+}
+
+.sortable .caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid\9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+/* end */
+
+.heightFixed {
+  display: flex; /* equal height of the children */
+}
+
+.widthFixed {
+  flex: 1;
+}
