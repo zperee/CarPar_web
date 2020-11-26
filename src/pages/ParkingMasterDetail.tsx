@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {getCity} from "../services/city-service";
 import {ICity, IParking} from "../shared/schemas/Datamodels";
-import ParkingDetail from "./ParkingDetail";
-import CityOverview from "./CityOverview";
+import ParkingDetail from "../components/ParkingDetail";
+import CityOverview from "../components/CityOverview";
 
 export default function ParkingMasterDetail() {
     const [city, setCity] = useState<ICity>();
@@ -20,8 +20,8 @@ export default function ParkingMasterDetail() {
     }, []);
 
     return (
-        selectedParking ? <ParkingDetail parking={selectedParking}/> :
-            city? <CityOverview city={city} setSelectedParking={setSelectedParking}/> :
-                <p>Could not load data.</p>
+        selectedParking ?
+            <ParkingDetail parking={selectedParking} setSelectedParking={setSelectedParking}/> :
+            <CityOverview city={city} isLoading={isLoading} setSelectedParking={setSelectedParking}/>
     )
 }

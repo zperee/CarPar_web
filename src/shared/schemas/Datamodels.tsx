@@ -37,14 +37,15 @@ export interface IParking {
     _id: string;
     name: string;
     city: string;
-    website: string;
+    website?: string;
     parking: IParkingInfo;
     geo: IGeo;
     address: IAddress;
-    openHours: IOpenHour[];
-    payment: number[];
+    openHours?: IOpenHour[];
+    payment?: number[];
     apiId: string;
     free: number;
+    percentFree: String;
     updatedAt: Date;
     createdAt: Date;
 }
@@ -53,4 +54,3 @@ export interface ILocation {
     type: string;
     coordinates: number[];
 }
-
