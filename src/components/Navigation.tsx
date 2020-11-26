@@ -26,7 +26,6 @@ export default function Navigation(props: INavigationProps) {
                             : <p key={city._id}/>
                             )}
                         </NavDropdown>
-                    <Nav.Link as={Link} to="/map">Karte</Nav.Link>
                     <Nav.Link as={Link} to="/about">Über uns</Nav.Link>
                 </Nav>
             </Navbar.Collapse>

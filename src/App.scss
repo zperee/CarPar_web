@@ -28,3 +28,13 @@
 .widthFixed {
   flex: 1;
 }
+
+html, body, #root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}

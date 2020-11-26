@@ -3,6 +3,7 @@ import {getCity} from "../services/city-service";
 import {ICity, IParking} from "../shared/schemas/Datamodels";
 import ParkingDetail from "../components/ParkingDetail";
 import CityOverview from "../components/CityOverview";
+import Map from "../components/Map";
 
 export default function ParkingMasterDetail() {
     const [city, setCity] = useState<ICity>();
@@ -22,6 +23,8 @@ export default function ParkingMasterDetail() {
     return (
         selectedParking ?
             <ParkingDetail parking={selectedParking} setSelectedParking={setSelectedParking}/> :
-            <CityOverview city={city} isLoading={isLoading} setSelectedParking={setSelectedParking}/>
+            <><CityOverview city={city} isLoading={isLoading} setSelectedParking={setSelectedParking}/>
+            <Map city={city} setSelectedParking={setSelectedParking}></Map>
+            </>
     )
 }

@@ -3,13 +3,13 @@ import {ICity, IParking} from "../shared/schemas/Datamodels";
 import BootstrapTable from 'react-bootstrap-table-next';
 import CenterSpinner from "./CenterSpinner";
 
-export interface ICityOverview {
+export interface ICityOverviewProps {
     city: ICity | undefined
     isLoading: boolean
     setSelectedParking: (parking: IParking) => void
 }
 
-export default function CityOverview(props: ICityOverview) {
+export default function CityOverview(props: ICityOverviewProps) {
     const {city, isLoading, setSelectedParking} = props
 
     city?.parkings.map(parking => parking.percentFree = Math.round(100/parking.parking.totalParking*parking.free) + '%')
