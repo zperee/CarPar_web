@@ -22,7 +22,8 @@ export default function ParkingMasterDetail() {
 
     return (
         selectedParking ?
-            <ParkingDetail parking={selectedParking} setSelectedParking={setSelectedParking}/> :
+            <><ParkingDetail parking={selectedParking} setSelectedParking={setSelectedParking}/>
+            <Map city={city} specificParking={selectedParking} setSelectedParking={setSelectedParking}></Map></>:
             <><CityOverview city={city} isLoading={isLoading} setSelectedParking={setSelectedParking}/>
             <Map city={city} setSelectedParking={setSelectedParking}></Map>
             </>

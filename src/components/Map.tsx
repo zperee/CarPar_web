@@ -1,14 +1,15 @@
 import React from 'react'
-import {GoogleMap, LoadScript, Marker, MarkerProps} from '@react-google-maps/api';
+import {GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
 import {ICity, IParking} from "../shared/schemas/Datamodels";
 
 export interface IMapProps {
     city: ICity | undefined
+    specificParking?: IParking | undefined
     setSelectedParking: (parking: IParking) => void
 }
 
 function Map(props: IMapProps) {
-    const {city, setSelectedParking} = props
+    const {city, specificParking, setSelectedParking} = props
 
     const containerStyle = {
         width: '100%',
@@ -31,7 +32,9 @@ function Map(props: IMapProps) {
                 zoom={13}
                 options={defaultMapOptions}
             >
-                <> {city.parkings.map(parking =>
+                <> {specificParking ? <Marker position={{lat: specificParking.geo.lat,
+                        lng: specificParking.geo.lon}}  onClick={() => setSelectedParking(specificParking)}/> :
+                    city.parkings.map(parking =>
                     <Marker position={{lat: parking.geo.lat,
                         lng: parking.geo.lon}}  onClick={() => setSelectedParking(parking)}/>
                 )} </>

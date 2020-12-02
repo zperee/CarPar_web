@@ -1,6 +1,6 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faCoins, faEuroSign, faCreditCard, faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faCoins, faEuroSign } from '@fortawesome/free-solid-svg-icons'
 import { faApplePay, faCcMastercard, faCcAmex, faCcVisa} from '@fortawesome/free-brands-svg-icons'
 
 export interface IPayIcon {
