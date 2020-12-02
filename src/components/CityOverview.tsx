@@ -12,7 +12,7 @@ export interface ICityOverviewProps {
 export default function CityOverview(props: ICityOverviewProps) {
     const {city, isLoading, setSelectedParking} = props
 
-    city?.parkings.map(parking => parking.percentFree = Math.round(100/parking.parking.totalParking*parking.free) + '%')
+    city?.parkings.map(parking => parking.percentFree = Math.round(100/parking.parking.totalParking*parking.free))
 
     function dateFormatter(cell: any) {
         return new Intl.DateTimeFormat("de", {
@@ -22,6 +22,14 @@ export default function CityOverview(props: ICityOverviewProps) {
             hour: "2-digit",
             minute: "2-digit"
         }).format(new Date(cell))
+    }
+
+    function numberFormatter(cell: any) {
+        return new Intl.NumberFormat("de", {maximumFractionDigits: 0}).format(cell) + "m"
+    }
+
+    function percentFormatter(cell: any) {
+        return cell + '%'
     }
 
     const columns = [{
@@ -35,13 +43,23 @@ export default function CityOverview(props: ICityOverviewProps) {
     }, {
         dataField: 'percentFree',
         text: 'Prozent frei',
-        sort: true
+        sort: true,
+        formatter: percentFormatter,
     }, {
         dataField: "updatedAt",
         text: "Aktualisiert am",
         sort: true,
         formatter: dateFormatter },
     ];
+
+    if (city?._id === "Search") {
+        columns.splice(3, 0, {
+            dataField: "dist.calculated",
+            text: "Entfernung",
+            sort: true,
+            formatter: numberFormatter,
+        } );
+    }
 
     const rowEvents = {
         onClick: (e: any, row: any, rowIndex: number) => {
@@ -59,7 +77,7 @@ export default function CityOverview(props: ICityOverviewProps) {
     );
 
     return (
-        <div className="container py-5">
+        <>
             <div className="row">
                 <div className="col-12">
                     <h1>{city?.name}</h1>
@@ -78,6 +96,6 @@ export default function CityOverview(props: ICityOverviewProps) {
                         noDataIndication={() => <NoDataIndication />}/>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

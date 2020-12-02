@@ -12,7 +12,7 @@ export default function ParkingDetail(props: IParkingOverview) {
     const {parking, setSelectedParking} = props
 
     return (
-        <div className="container py-5">
+        <>
             <button type="button" className="btn btn-link" onClick={() => setSelectedParking(undefined)}>&lt; Zurück</button>
             <h1>{parking.name}</h1>
             <hr/>
@@ -23,7 +23,7 @@ export default function ParkingDetail(props: IParkingOverview) {
                             <Card.Title>Freie Parkplätze</Card.Title>
                             <Card.Text className="heightFixed">
                                 <h2 className="card-text"><span className="badge badge-success">{parking.free}/{parking.parking.totalParking}</span>
-                                <br/><span className="badge badge-success">{parking.percentFree}</span></h2>
+                                <br/><span className="badge badge-success">{parking.percentFree}%</span></h2>
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -65,6 +65,6 @@ export default function ParkingDetail(props: IParkingOverview) {
                     </Card>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

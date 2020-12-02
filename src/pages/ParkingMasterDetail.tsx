@@ -5,14 +5,14 @@ import ParkingDetail from "../components/ParkingDetail";
 import CityOverview from "../components/CityOverview";
 import Map from "../components/Map";
 
-export default function ParkingMasterDetail() {
+export default function ParkingMasterDetail(props: any) {
     const [city, setCity] = useState<ICity>();
     const [selectedParking, setSelectedParking] = useState<IParking>();
     const [isLoading, setLoading] = useState(true);
 
     useEffect( () => {
         async function fetchCity() {
-            getCity()
+            getCity(props.match.params.cityId)
                 .then((res: ICity) => setCity(res))
                 .catch((ex: string) => console.warn("Could not load load City: " + ex))
                 .finally(() => setLoading(false))
@@ -21,11 +21,13 @@ export default function ParkingMasterDetail() {
     }, []);
 
     return (
-        selectedParking ?
-            <><ParkingDetail parking={selectedParking} setSelectedParking={setSelectedParking}/>
-            <Map city={city} specificParking={selectedParking} setSelectedParking={setSelectedParking}></Map></>:
-            <><CityOverview city={city} isLoading={isLoading} setSelectedParking={setSelectedParking}/>
-            <Map city={city} setSelectedParking={setSelectedParking}></Map>
-            </>
+        <>
+        <div className="container py-5">
+        {selectedParking ?
+            <ParkingDetail parking={selectedParking} setSelectedParking={setSelectedParking}/> :
+            <CityOverview city={city} isLoading={isLoading} setSelectedParking={setSelectedParking}/>}
+        </div>
+        <Map city={city} setSelectedParking={setSelectedParking}/>
+        </>
     )
 }

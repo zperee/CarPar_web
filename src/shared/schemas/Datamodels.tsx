@@ -2,8 +2,8 @@ export interface ICity {
     _id: string;
     name: string;
     parkings: IParking[];
-    image: string;
-    showInUI: boolean;
+    image?: string;
+    showInUI?: boolean;
     location: ILocation;
 }
 
@@ -14,11 +14,6 @@ export interface IParkingInfo {
     familyParking?: number;
     womenParking?: number;
     xlParking?: number;
-}
-
-export interface IGeo {
-    lat: number;
-    lon: number;
 }
 
 export interface IAddress {
@@ -39,13 +34,13 @@ export interface IParking {
     city: string;
     website?: string;
     parking: IParkingInfo;
-    geo: IGeo;
+    location: ILocation;
     address: IAddress;
     openHours?: IOpenHour[];
     payment?: number[];
     apiId: string;
     free: number;
-    percentFree: String;
+    percentFree: number;
     updatedAt: Date;
     createdAt: Date;
 }

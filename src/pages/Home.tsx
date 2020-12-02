@@ -1,13 +1,14 @@
-import React from "react";
-import {Button, Card, Container, Form, FormControl, Jumbotron, NavLink} from "react-bootstrap";
+import React, {RefObject} from "react";
+import {Button, Card, Container, Form, FormControl, Jumbotron} from "react-bootstrap";
 import logo from '../assets/logo.png';
 import appstore from '../assets/appstore.png';
 import playstore from '../assets/playstore.png';
 import luzernImage from '../assets/luzern.png';
 import {ICity} from "../shared/schemas/Datamodels";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import CenterSpinner from "../components/CenterSpinner";
 import IStyleSheet from "../shared/schemas/StyleSheet";
+import ParkingSearchForm from "../components/ParkingSearchForm";
 
 export interface IHomeProps {
     cities: ICity[] | undefined
@@ -16,7 +17,6 @@ export interface IHomeProps {
 
 export default function Home(props: IHomeProps) {
     const {cities, isLoading} = props
-
     const images: any = {};
     images['luzern'] = luzernImage;
 
@@ -26,19 +26,10 @@ export default function Home(props: IHomeProps) {
                 <Container className="py-5">
                     <h1 className="display-4">Finde dein Parkhaus</h1>
                     <p className="lead">
-                        Mit dem zentralen Parkleitsystem aus der Schweiz.
+                        Mit dem zentralen Parkleitsystem der Schweiz.
                     </p>
                     <hr className="my-4"/>
-                    <Form>
-                        <div className="row">
-                            <div className="col">
-                                <FormControl type="text" placeholder="Parkhaus suchen"/>
-                            </div>
-                            <div className="col">
-                                <Button variant="outline-dark">Search</Button>
-                            </div>
-                        </div>
-                    </Form>
+                    <ParkingSearchForm/>
                 </Container>
             </Jumbotron>
             <Container className="py-5">

@@ -25,7 +25,7 @@ export default function About() {
                         <Card.Body>
                             <Card.Title>Jessica Nigg</Card.Title>
                             <Card.Text className="heightFixed">
-                                Arbeitet bei und studiert digital Business Management
+                                Arbeitet bei The Prosperity Company und studiert digital Business Management
                             </Card.Text>
                         </Card.Body>
                     </Card>

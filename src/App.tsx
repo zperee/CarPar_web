@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import {ICity} from "./shared/schemas/Datamodels";
 import {getCities} from "./services/city-service";
 import ParkingMasterDetail from "./pages/ParkingMasterDetail";
+import Search from "./pages/Search";
+import CityOverview from "./components/CityOverview";
 
 function App() {
     const [cities, setCities] = useState<ICity[]>();
@@ -33,6 +35,7 @@ function App() {
             renders the first one that matches the current URL. */}
                 <Switch>
                     <Route exact path="/about" component={About}/>
+                    <Route exact path="/search" component={Search}/>
                     <Route exact path="/city/:cityId" component={ParkingMasterDetail}/>
                     <Route path="/" component={() => <Home cities={cities} isLoading={isLoading}/>}/>
                 </Switch>
